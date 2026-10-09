@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy - Hermes Agent | Kevin Varon</title>
+<meta name="description" content="Privacy policy for Hermes Agent, a single-user personal AI assistant run by Kevin Varon. How it accesses, uses, stores and shares Google user data, including Google API Services Limited Use compliance.">
+<link rel="canonical" href="https://k3vin135.github.io/privacy.html">
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf9f7;
+    --bg-alt:#f2f0ec;
+    --ink:#1b1d1f;
+    --ink-soft:#4e5257;
+    --ink-faint:#74787d;
+    --line:#d9d6d0;
+    --line-strong:#b9b5ad;
+    --accent:#a6360b;
+    --accent-ink:#ffffff;
+    --focus:#1f5fbf;
+    --radius:10px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#121415;
+      --bg-alt:#1a1d1f;
+      --ink:#eceae6;
+      --ink-soft:#b3b7bb;
+      --ink-faint:#8b9094;
+      --line:#2c3033;
+      --line-strong:#3e4347;
+      --accent:#f08a4b;
+      --accent-ink:#1b1d1f;
+      --focus:#7fb0ff;
+    }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;background:var(--bg);color:var(--ink);
+    font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-weight:700;letter-spacing:-0.02em;line-height:1.15;margin:0}
+  p,ul{margin:0}
+  a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1.5px}
+  a:hover{text-decoration-thickness:2.5px}
+  :focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--bg);padding:12px 18px;z-index:10}
+  .skip:focus{left:12px;top:12px}
+
+  header.site{border-bottom:1px solid var(--line);background:var(--bg)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:68px}
+  .brand{font-weight:700;font-size:1.0625rem;letter-spacing:-0.01em;text-decoration:none}
+  .nav ul{display:flex;align-items:center;gap:22px;list-style:none;margin:0;padding:0}
+  .nav ul a{font-size:0.9375rem;text-decoration:none;color:var(--ink-soft)}
+  .nav ul a:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:4px}
+  @media (max-width:720px){
+    .nav{height:auto;flex-direction:column;align-items:flex-start;gap:10px;padding:16px 0}
+    .nav ul{flex-wrap:wrap;gap:14px}
+  }
+
+  .page-head{padding:64px 0 48px;border-bottom:1px solid var(--line)}
+  .page-head h1{font-size:clamp(2rem,4.6vw,3.25rem);max-width:24ch}
+  .page-head p.lede{margin-top:20px;color:var(--ink-soft);max-width:60ch}
+  .meta{margin-top:28px;font-size:0.8125rem;color:var(--ink-faint)}
+
+  .layout{display:grid;grid-template-columns:minmax(0,260px) minmax(0,1fr);gap:64px;padding:56px 0 72px}
+  nav.toc{position:sticky;top:28px;align-self:start}
+  nav.toc h2{font-size:0.75rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);font-weight:500;margin-bottom:14px}
+  nav.toc ol{list-style:none;margin:0;padding:0;counter-reset:toc}
+  nav.toc li{margin-bottom:9px}
+  nav.toc a{font-size:0.875rem;text-decoration:none;color:var(--ink-soft);display:block}
+  nav.toc a:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:4px}
+  @media (max-width:900px){
+    .layout{grid-template-columns:1fr;gap:40px;padding:40px 0 56px}
+    nav.toc{position:static;border:1px solid var(--line);border-radius:var(--radius);padding:20px;background:var(--bg-alt)}
+  }
+
+  article section{padding-bottom:44px;margin-bottom:44px;border-bottom:1px solid var(--line)}
+  article section:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0}
+  article h2{font-size:1.4375rem;margin-bottom:18px}
+  article h3{font-size:1.0625rem;margin:26px 0 10px}
+  article p{color:var(--ink-soft);max-width:70ch}
+  article p+p{margin-top:16px}
+  article strong{color:var(--ink);font-weight:500}
+  article ul{list-style:none;padding:0;margin-top:16px;max-width:70ch;display:grid;gap:12px}
+  article ul li{color:var(--ink-soft);padding-left:22px;position:relative}
+  article ul li::before{content:"";position:absolute;left:2px;top:0.72em;width:9px;height:1.5px;background:var(--accent)}
+  .callout{
+    border:1px solid var(--line-strong);border-left:4px solid var(--accent);
+    border-radius:var(--radius);background:var(--bg-alt);padding:24px 26px;margin-top:22px;max-width:70ch;
+  }
+  .callout h3{margin-top:0}
+  .callout p{color:var(--ink-soft)}
+  .no-list li::before{background:var(--ink-faint)}
+
+  footer.site{padding:40px 0;border-top:1px solid var(--line)}
+  .foot{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center;font-size:0.875rem;color:var(--ink-faint)}
+  .foot a{color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="https://k3vin135.github.io/">Kevin Varon</a>
+      <ul>
+        <li><a href="https://k3vin135.github.io/">Home</a></li>
+        <li><a href="https://k3vin135.github.io/#hermes">Hermes Agent</a></li>
+        <li><a href="mailto:kevinvaron6@gmail.com">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="page-head">
+  <div class="wrap">
+    <p class="mono" style="font-size:0.8125rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:20px">Hermes Agent</p>
+    <h1>Privacy Policy</h1>
+    <p class="lede">Hermes Agent is a single-user personal AI assistant operated by Kevin Varon on a private server. This policy explains exactly what Google user data it touches, how that data is used and stored, and who it is shared with.</p>
+    <p class="meta mono">Last updated: October 9, 2026</p>
+  </div>
+</div>
+
+<main id="main" class="wrap">
+  <div class="layout">
+
+    <nav class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#who">Who this applies to</a></li>
+        <li><a href="#data">Data the app accesses</a></li>
+        <li><a href="#use">How the data is used</a></li>
+        <li><a href="#limited-use">Google Limited Use</a></li>
+        <li><a href="#storage">Storage and retention</a></li>
+        <li><a href="#sharing">Sharing and disclosure</a></li>
+        <li><a href="#security">Security</a></li>
+        <li><a href="#revoke">Revoking access</a></li>
+        <li><a href="#changes">Changes</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ol>
+    </nav>
+
+    <article>
+
+      <section id="who">
+        <h2>Who this applies to</h2>
+        <p>Hermes Agent is <strong>personal, single-user software</strong>. It runs on a private server controlled by Kevin Varon, and the only Google account it ever connects to is his own.</p>
+        <p>There is no public service, no hosted product, no sign up page, and no user accounts. No one other than the operator can authorize the application or use it. If you have arrived here from a Google consent screen, that consent screen belongs to this single personal installation.</p>
+      </section>
+
+      <section id="data">
+        <h2>Data the app accesses</h2>
+        <p>Hermes Agent requests access to Google APIs on behalf of the operator's own Google account. Specifically:</p>
+        <ul>
+          <li><strong>Gmail.</strong> Reading messages and threads, drafting messages, sending messages, and replying to messages, in the operator's own mailbox.</li>
+          <li><strong>Google Calendar.</strong> Reading and creating calendar events, only if that scope is separately authorized.</li>
+          <li><strong>Google Drive.</strong> Reading and writing files, only if that scope is separately authorized.</li>
+        </ul>
+        <p>No data belonging to any other person's Google account is accessed, because no other person can connect an account to this application.</p>
+      </section>
+
+      <section id="use">
+        <h2>How the data is used</h2>
+        <p>Google user data is used only to carry out tasks the operator asks for directly, in that moment. Typical examples: summarizing what arrived in the inbox, drafting a reply to a specific thread, sending a message the operator approved, or looking up a detail inside an email so it can be acted on.</p>
+        <p>Google user data is explicitly <strong>not</strong> used for any of the following:</p>
+        <ul class="no-list">
+          <li>Training, fine-tuning or improving any machine learning or AI model.</li>
+          <li>Building user profiles, behavioral profiles or audience segments.</li>
+          <li>Advertising, marketing or retargeting of any kind.</li>
+          <li>Analytics, measurement or usage statistics, whether first party or third party.</li>
+          <li>Resale, licensing or any other transfer to another party.</li>
+        </ul>
+      </section>
+
+      <section id="limited-use">
+        <h2>Google Limited Use</h2>
+        <div class="callout">
+          <h3>Limited Use compliance statement</h3>
+          <p>Hermes Agent's use and transfer of information received from Google APIs adheres to the <a href="https://developers.google.com/terms/api-services-user-data-policy">Google API Services User Data Policy</a>, including its <strong>Limited Use requirements</strong>.</p>
+          <p>In practice this means: data obtained from Google APIs is used only to provide or improve the user-facing features the operator explicitly invoked; it is not transferred to others except as necessary to provide those features, to comply with applicable law, or as part of a merger or acquisition (neither of which applies to a personal single-user installation); it is not used for advertising; and no humans read the data except the operator himself, acting on his own mailbox.</p>
+        </div>
+      </section>
+
+      <section id="storage">
+        <h2>Storage and retention</h2>
+        <h3>OAuth tokens</h3>
+        <p>The OAuth access token and refresh token issued by Google are stored <strong>locally on the operator's private server</strong>, in the application's own configuration directory on that machine. They are not transmitted anywhere else and are not stored in any cloud service, hosted database or third-party platform. They are retained until access is revoked or the credentials are deleted from the server, at which point they are destroyed.</p>
+        <h3>Message content</h3>
+        <p>Email content, calendar entries and file content are fetched from Google's APIs, held <strong>in memory for the duration of the task</strong>, and then discarded. Hermes Agent does <strong>not</strong> build or maintain an email database, a mail archive, a search index of messages, or a long-term copy of Google user data.</p>
+        <p>The one exception is ordinary, operator-initiated output: if the operator asks the assistant to write a summary or save a note to a file on his own server, that file is his own document on his own machine, and he controls and deletes it like any other file.</p>
+      </section>
+
+      <section id="sharing">
+        <h2>Sharing and disclosure</h2>
+        <p>Google user data is shared with <strong>no one</strong>. There are no third-party recipients, no data processors, no advertisers, no data brokers, no analytics vendors, and no sale or licensing of data under any circumstances.</p>
+        <p>The only network destination for Google user data is <strong>Google's own APIs</strong>, which is where the data came from and where replies and actions are sent back. Any data that would leave the operator's server would only ever be the content of a message he himself instructed the assistant to send from his own mailbox.</p>
+      </section>
+
+      <section id="security">
+        <h2>Security</h2>
+        <p>All communication with Google APIs happens over HTTPS. The private server is under the operator's sole administrative control, credentials are stored outside of any version-controlled or published code, and access to the machine is restricted to the operator. Because the system has exactly one user and no public interface, there is no account surface for anyone else to attack or impersonate.</p>
+      </section>
+
+      <section id="revoke">
+        <h2>Revoking access</h2>
+        <p>Access can be revoked at any time, with immediate effect, from the Google Account permissions page:</p>
+        <ul>
+          <li><a href="https://myaccount.google.com/permissions">https://myaccount.google.com/permissions</a></li>
+        </ul>
+        <p>Revoking there invalidates the stored tokens and the application loses all access to Google user data. A deletion request can also be sent to <a href="mailto:kevinvaron6@gmail.com">kevinvaron6@gmail.com</a>, and the stored tokens will be deleted from the server.</p>
+      </section>
+
+      <section id="changes">
+        <h2>Changes to this policy</h2>
+        <p>If the application's data handling changes, this page is updated and the date at the top of the page changes with it. The current version is always published at <a href="https://k3vin135.github.io/privacy.html">https://k3vin135.github.io/privacy.html</a>.</p>
+      </section>
+
+      <section id="contact">
+        <h2>Contact</h2>
+        <p>Questions about this policy, about Hermes Agent, or about data handling can go to Kevin Varon at <a href="mailto:kevinvaron6@gmail.com">kevinvaron6@gmail.com</a>, or through <a href="https://github.com/K3vin135">github.com/K3vin135</a>.</p>
+      </section>
+
+    </article>
+  </div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot">
+      <p>Kevin Varon, Morgan Hill, California.</p>
+      <p><a href="https://k3vin135.github.io/">Back to home</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

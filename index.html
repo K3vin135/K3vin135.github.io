@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kevin Varon - Mechatronics Engineer | Industrial Automation, Web Apps, IoT</title>
+<meta name="description" content="Kevin Varon is a mechatronics engineer in Morgan Hill, California, working on industrial automation, web applications and IoT systems. Home of Hermes Agent, a single-user personal AI assistant.">
+<link rel="canonical" href="https://k3vin135.github.io/">
+<meta name="color-scheme" content="light dark">
+<meta property="og:title" content="Kevin Varon - Mechatronics Engineer">
+<meta property="og:description" content="Industrial automation, web applications and IoT systems. South Santa Clara County, California.">
+<meta property="og:url" content="https://k3vin135.github.io/">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf9f7;
+    --bg-alt:#f2f0ec;
+    --ink:#1b1d1f;
+    --ink-soft:#4e5257;
+    --ink-faint:#74787d;
+    --line:#d9d6d0;
+    --line-strong:#b9b5ad;
+    --accent:#a6360b;
+    --accent-ink:#ffffff;
+    --focus:#1f5fbf;
+    --radius:10px;
+    --maxw:1180px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{
+      --bg:#121415;
+      --bg-alt:#1a1d1f;
+      --ink:#eceae6;
+      --ink-soft:#b3b7bb;
+      --ink-faint:#8b9094;
+      --line:#2c3033;
+      --line-strong:#3e4347;
+      --accent:#f08a4b;
+      --accent-ink:#1b1d1f;
+      --focus:#7fb0ff;
+    }
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:"Space Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{font-weight:700;letter-spacing:-0.02em;line-height:1.1;margin:0}
+  p{margin:0}
+  a{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1.5px}
+  a:hover{text-decoration-thickness:2.5px}
+  :focus-visible{outline:3px solid var(--focus);outline-offset:3px;border-radius:4px}
+  .mono{font-family:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .skip{position:absolute;left:-9999px;top:0;background:var(--ink);color:var(--bg);padding:12px 18px;z-index:10}
+  .skip:focus{left:12px;top:12px}
+
+  /* nav */
+  header.site{border-bottom:1px solid var(--line);background:var(--bg)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:68px}
+  .brand{font-weight:700;font-size:1.0625rem;letter-spacing:-0.01em;text-decoration:none}
+  .nav ul{display:flex;align-items:center;gap:22px;list-style:none;margin:0;padding:0}
+  .nav ul a{font-size:0.9375rem;text-decoration:none;color:var(--ink-soft)}
+  .nav ul a:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:4px}
+  @media (max-width:720px){
+    .nav{height:auto;flex-direction:column;align-items:flex-start;gap:10px;padding:16px 0}
+    .nav ul{flex-wrap:wrap;gap:14px}
+  }
+
+  /* hero */
+  .hero{border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:center;padding:72px 0 80px}
+  .kicker{font-size:0.8125rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--ink-faint);margin-bottom:22px}
+  .hero h1{font-size:clamp(2.25rem,5.4vw,3.75rem)}
+  .hero h1 em{font-style:italic;line-height:1.12;padding-bottom:0.08em;display:inline-block}
+  .hero p.lede{margin-top:22px;color:var(--ink-soft);font-size:1.0625rem;max-width:46ch}
+  .cta-row{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+  .btn{
+    display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
+    padding:13px 22px;border-radius:var(--radius);font-size:0.9375rem;font-weight:500;
+    text-decoration:none;border:1.5px solid transparent;transition:transform .12s ease,background-color .15s ease,border-color .15s ease;
+  }
+  .btn-primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+  .btn-primary:hover{background:color-mix(in srgb,var(--accent) 86%,var(--ink))}
+  .btn-ghost{border-color:var(--line-strong);color:var(--ink);background:transparent}
+  .btn-ghost:hover{border-color:var(--ink);background:var(--bg-alt)}
+  .btn:active{transform:translateY(1px)}
+  .hero-facts{display:grid;gap:0;border-top:1px solid var(--line-strong)}
+  .hero-facts .row{display:grid;grid-template-columns:minmax(96px,auto) 1fr;gap:20px;align-items:baseline;padding:18px 0;border-bottom:1px solid var(--line)}
+  .hero-facts .row:last-child{border-bottom:none}
+  .hero-facts .k{font-family:"IBM Plex Mono",monospace;font-size:0.75rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-faint)}
+  .hero-facts .v{font-size:0.9375rem;color:var(--ink-soft)}
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding:48px 0 56px}
+  }
+
+  /* generic section */
+  section{padding:84px 0;border-bottom:1px solid var(--line)}
+  @media (max-width:860px){section{padding:56px 0}}
+  .sec-head{max-width:62ch;margin-bottom:48px}
+  .sec-head h2{font-size:clamp(1.75rem,3.4vw,2.5rem)}
+  .sec-head p{margin-top:16px;color:var(--ink-soft)}
+
+  /* work: one feature row + asymmetric pair */
+  .feature{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:40px;align-items:start}
+  .figure-xl{font-size:clamp(3rem,8vw,5.25rem);font-weight:700;letter-spacing:-0.04em;line-height:0.9;color:var(--accent)}
+  .figure-label{margin-top:10px;font-size:0.8125rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-faint)}
+  .feature h3{font-size:1.5rem;margin-bottom:14px}
+  .feature p{color:var(--ink-soft);max-width:60ch}
+  .pair{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;margin-top:64px;padding-top:56px;border-top:1px solid var(--line)}
+  .pair h3{font-size:1.25rem;margin-bottom:12px}
+  .pair p{color:var(--ink-soft)}
+  .pair .num{font-family:"IBM Plex Mono",monospace;font-size:1.75rem;font-weight:500;color:var(--ink);display:block;margin-bottom:10px}
+  @media (max-width:860px){
+    .feature,.pair{grid-template-columns:1fr;gap:24px}
+    .pair{margin-top:40px;padding-top:36px}
+  }
+
+  /* hermes: prose + data panel */
+  .hermes{background:var(--bg-alt)}
+  .prose{max-width:66ch}
+  .prose p+p{margin-top:18px}
+  .prose p{color:var(--ink-soft)}
+  .prose strong{color:var(--ink);font-weight:500}
+  .panel{
+    margin-top:40px;border:1px solid var(--line-strong);border-radius:var(--radius);
+    background:var(--bg);padding:28px 30px;max-width:72ch;
+  }
+  .panel h3{font-size:1rem;letter-spacing:0;margin-bottom:18px}
+  .panel dl{margin:0;display:grid;grid-template-columns:minmax(150px,0.8fr) minmax(0,2fr);gap:14px 28px}
+  .panel dt{font-family:"IBM Plex Mono",monospace;font-size:0.8125rem;color:var(--ink-faint);padding-top:2px}
+  .panel dd{margin:0;font-size:0.9375rem;color:var(--ink-soft)}
+  .panel .policy-link{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);font-size:0.9375rem}
+  @media (max-width:640px){
+    .panel dl{grid-template-columns:1fr;gap:4px 0}
+    .panel dd{margin-bottom:12px}
+  }
+
+  /* stack: grouped chunks */
+  .groups{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:40px}
+  .group h3{font-size:0.8125rem;letter-spacing:0.12em;text-transform:none;color:var(--ink-faint);font-weight:500;font-family:"IBM Plex Mono",monospace;margin-bottom:14px}
+  .group ul{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+  .group li{border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:0.875rem;color:var(--ink-soft);background:var(--bg)}
+
+  /* contact */
+  .contact-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,6fr);gap:48px;align-items:end}
+  .contact-grid h2{font-size:clamp(1.75rem,4vw,2.75rem)}
+  .contact-list{display:grid;gap:18px}
+  .contact-list .row{display:grid;grid-template-columns:120px 1fr;gap:16px;align-items:baseline;font-size:1rem}
+  .contact-list .k{font-family:"IBM Plex Mono",monospace;font-size:0.8125rem;color:var(--ink-faint)}
+  @media (max-width:860px){
+    .contact-grid{grid-template-columns:1fr;gap:32px}
+    .contact-list .row{grid-template-columns:1fr;gap:2px}
+  }
+
+  footer.site{padding:40px 0;border-bottom:none}
+  .foot{display:flex;flex-wrap:wrap;gap:12px 28px;justify-content:space-between;align-items:center;font-size:0.875rem;color:var(--ink-faint)}
+  .foot a{color:var(--ink-soft)}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="wrap">
+    <nav class="nav" aria-label="Main">
+      <a class="brand" href="https://k3vin135.github.io/">Kevin Varon</a>
+      <ul>
+        <li><a href="#work">Work</a></li>
+        <li><a href="#hermes">Hermes Agent</a></li>
+        <li><a href="#contact">Contact</a></li>
+        <li><a href="https://k3vin135.github.io/privacy.html">Privacy Policy</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+
+  <div class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="kicker mono">Mechatronics engineer</p>
+          <h1>Industrial automation, web applications and <em>IoT</em> systems.</h1>
+          <p class="lede">I build the control systems, dashboards and sensor networks that keep a production floor running.</p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="mailto:kevinvaron6@gmail.com">Email me</a>
+            <a class="btn btn-ghost" href="https://github.com/K3vin135">GitHub</a>
+          </div>
+        </div>
+        <div class="hero-facts">
+          <div class="row"><span class="k">Discipline</span><span class="v">Mechatronics engineering</span></div>
+          <div class="row"><span class="k">Based in</span><span class="v">Morgan Hill, California</span></div>
+          <div class="row"><span class="k">Working in</span><span class="v">South Santa Clara County</span></div>
+          <div class="row"><span class="k">Focus</span><span class="v">Production line automation, internal web applications, sensor networks on Azure</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section id="work">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>What I have built</h2>
+        <p>Projects running in production at a flower growing and distribution operation in South Santa Clara County.</p>
+      </div>
+
+      <div class="feature">
+        <div>
+          <p class="figure-xl">43%</p>
+          <p class="figure-label">More line capacity</p>
+        </div>
+        <div>
+          <h3>Rebuilt a bouquet production line</h3>
+          <p>Reworked the mechanics, sequencing and control of an assembly line so it moved from 1,400 to 2,000 bouquets per hour, with the same crew and the same floor space.</p>
+        </div>
+      </div>
+
+      <div class="pair">
+        <div>
+          <span class="num">80%+ below quote</span>
+          <h3>Temperature monitoring across cold storage</h3>
+          <p>An IoT network of ESP32 sensors feeding Azure, designed and built in house for more than 80% less than the commercial system we were quoted. It reports cooler temperatures continuously instead of relying on manual checks.</p>
+        </div>
+        <div>
+          <span class="num">4+ web apps</span>
+          <h3>Replaced 200+ Excel macro files</h3>
+          <p>React, TypeScript and Azure Functions applications that took over work previously spread across more than 200 Excel macro files. They are used by 30+ people every day.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="hermes" class="hermes">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Hermes Agent</h2>
+        <p>A personal AI assistant I run on my own private server. It is the application behind the Google OAuth consent screen that may have brought you here.</p>
+      </div>
+
+      <div class="prose">
+        <p>Hermes Agent is <strong>single user software</strong>. There is one instance, it runs on a private server I control, and the only person who uses it is me. There is no public service, no sign up, and no accounts for anyone else.</p>
+        <p>I ask it to handle the parts of my day that are repetitive: reading through my inbox, drafting and sending replies, pulling details out of a thread so I can act on it, and keeping track of what still needs an answer. To do that on my behalf, it needs access to <strong>my own Gmail account</strong> through the Gmail API. That is the reason for the OAuth request.</p>
+        <p>Nothing it reads leaves my server or goes to a third party. Email content is handled in memory for the task at hand and is not collected into a database, it is not used to train models, and it is never sold or shared. The full detail, including Google's Limited Use requirements and how to revoke access, is in the privacy policy.</p>
+      </div>
+
+      <div class="panel">
+        <h3>What the app does with Google user data</h3>
+        <dl>
+          <dt>Whose data</dt>
+          <dd>Only Kevin Varon's own Google account. No other users exist.</dd>
+          <dt>Google APIs used</dt>
+          <dd>Gmail: read, compose, send and reply. Calendar and Drive only if separately authorized.</dd>
+          <dt>Stored</dt>
+          <dd>OAuth tokens, kept locally on the private server. No email database.</dd>
+          <dt>Shared with</dt>
+          <dd>No one. No third parties, no advertisers, no analytics.</dd>
+          <dt>Revoke access</dt>
+          <dd><a href="https://myaccount.google.com/permissions">myaccount.google.com/permissions</a></dd>
+        </dl>
+        <p class="policy-link"><a href="https://k3vin135.github.io/privacy.html"><strong>Read the full Privacy Policy</strong></a></p>
+      </div>
+    </div>
+  </section>
+
+  <section id="stack">
+    <div class="wrap">
+      <div class="sec-head">
+        <h2>Tools I work with</h2>
+      </div>
+      <div class="groups">
+        <div class="group">
+          <h3>Backend and data</h3>
+          <ul>
+            <li>Python</li><li>FastAPI</li><li>SQL Server</li><li>Azure Functions</li><li>Power BI</li>
+          </ul>
+        </div>
+        <div class="group">
+          <h3>Frontend</h3>
+          <ul>
+            <li>React</li><li>TypeScript</li>
+          </ul>
+        </div>
+        <div class="group">
+          <h3>Hardware and vision</h3>
+          <ul>
+            <li>ESP32</li><li>C++</li><li>Computer vision</li>
+          </ul>
+        </div>
+        <div class="group">
+          <h3>Published</h3>
+          <p style="margin:0;font-size:0.9375rem;color:var(--ink-soft);max-width:30ch"><a href="https://github.com/K3vin135/iot-azure-bridge">EasyAzureIoT</a>, an open source ESP32 to Azure library in the Arduino library registry.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <div class="contact-grid">
+        <div>
+          <h2>Have a machine, a line or a spreadsheet that needs fixing?</h2>
+        </div>
+        <div class="contact-list">
+          <div class="row"><span class="k">Email</span><span><a href="mailto:kevinvaron6@gmail.com">kevinvaron6@gmail.com</a></span></div>
+          <div class="row"><span class="k">GitHub</span><span><a href="https://github.com/K3vin135">github.com/K3vin135</a></span></div>
+          <div class="row"><span class="k">Based in</span><span>Morgan Hill, California. Working across South Santa Clara County.</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot">
+      <p>Kevin Varon, Morgan Hill, California.</p>
+      <p><a href="https://k3vin135.github.io/privacy.html">Privacy Policy</a></p>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
