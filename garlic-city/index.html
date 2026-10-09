@@ -244,6 +244,28 @@ footer a:hover { color: #fff; text-decoration: underline; }
 .ai-banner strong{color:#7e2234}
 @media(max-width:640px){.ai-note,.ai-banner{font-size:.76rem}}
 </style>
+
+<style>
+  /* Selector de idioma */
+  .lang{
+    display:inline-flex;align-items:center;gap:6px;cursor:pointer;
+    font:600 13px/1 Archivo,system-ui,sans-serif;letter-spacing:.03em;
+    color:var(--cream,#fdf6e9);background:rgba(253,246,233,.12);
+    border:1px solid rgba(253,246,233,.34);border-radius:999px;
+    padding:8px 13px;margin-right:10px;
+    transition:background .18s ease,border-color .18s ease,transform .18s ease;
+    -webkit-tap-highlight-color:transparent;
+  }
+  .lang:hover{background:rgba(253,246,233,.22);border-color:rgba(253,246,233,.55)}
+  .lang:active{transform:scale(.96)}
+  .lang:focus-visible{outline:2px solid var(--cream,#fdf6e9);outline-offset:3px}
+  .lang i{font-size:15px;opacity:.85}
+  @media(max-width:760px){
+    .lang{padding:7px 11px;margin-right:7px;font-size:12px}
+    .lang i{font-size:14px}
+  }
+  @media print{.lang{display:none}}
+</style>
 </head>
 <body>
 <a class="skip" href="#menu">Skip to the menu</a>
@@ -259,6 +281,7 @@ footer a:hover { color: #fff; text-decoration: underline; }
     </nav>
     <div class="bar-right">
       <p class="status" id="status" aria-live="polite"><span class="dot" aria-hidden="true"></span><span id="status-text">Checking hours</span></p>
+      <button class="lang" id="lang" type="button" aria-label="Ver esta pagina en espanol" title="Espanol"><i class="ph ph-translate" aria-hidden="true"></i><span id="lang-label">ES</span></button>
       <a class="btn btn-light btn-sm call-top" href="tel:+14088477744"><i class="ph ph-phone"></i>Call</a>
     </div>
   </div>
@@ -464,9 +487,19 @@ footer a:hover { color: #fff; text-decoration: underline; }
 
 <script>
 (function () {
-  // Open or closed, read on the restaurant's clock (America/Los_Angeles).
+  // Abierto o cerrado, leido en el reloj del restaurante (America/Los_Angeles).
   var HOURS = { 0: [480, 780], 1: null, 2: [480, 900], 3: [480, 900], 4: [480, 1140], 5: [480, 1140], 6: [480, 1140] };
-  var DAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  var DAY = {
+    en: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    es: ["domingo", "lunes", "martes", "miercoles", "jueves", "viernes", "sabado"]
+  };
+  var T = {
+    en: { check: "See hours below", open: "Open now until ", soon: "Opens today at ",
+          shut: "Closed, opens ", tom: "tomorrow", at: " at " },
+    es: { check: "Vea el horario abajo", open: "Abierto hasta las ", soon: "Abre hoy a las ",
+          shut: "Cerrado, abre ", tom: "manana", at: " a las " }
+  };
+  var lang = "en";
   function now() {
     try {
       var p = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false }).formatToParts(new Date());
@@ -476,17 +509,96 @@ footer a:hover { color: #fff; text-decoration: underline; }
   }
   function fmt(m) { var h = Math.floor(m / 60), mm = m % 60; return (h % 12 || 12) + (mm ? ":" + (mm < 10 ? "0" : "") + mm : "") + (h >= 12 ? " pm" : " am"); }
   var wrap = document.getElementById("status"), text = document.getElementById("status-text");
-  function render() {
-    var n = now();
-    if (!n) { text.textContent = "See hours below"; return; }
+  function render(to) {
+    if (to) lang = to;
+    var s = T[lang], d = DAY[lang], n = now();
+    if (!n) { text.textContent = s.check; return; }
     document.querySelectorAll("#hours li").forEach(function (r) { r.setAttribute("data-today", +r.getAttribute("data-day") === n.day ? "yes" : "no"); });
     var t = HOURS[n.day];
-    if (t && n.min >= t[0] && n.min < t[1]) { wrap.setAttribute("data-open", "yes"); text.textContent = "Open now until " + fmt(t[1]); return; }
+    if (t && n.min >= t[0] && n.min < t[1]) { wrap.setAttribute("data-open", "yes"); text.textContent = s.open + fmt(t[1]); return; }
     wrap.setAttribute("data-open", "no");
-    if (t && n.min < t[0]) { text.textContent = "Opens today at " + fmt(t[0]); return; }
-    for (var i = 1; i <= 7; i++) { var d = (n.day + i) % 7; if (HOURS[d]) { text.textContent = "Closed, opens " + (i === 1 ? "tomorrow" : DAY[d]) + " at " + fmt(HOURS[d][0]); return; } }
+    if (t && n.min < t[0]) { text.textContent = s.soon + fmt(t[0]); return; }
+    for (var i = 1; i <= 7; i++) { var k = (n.day + i) % 7; if (HOURS[k]) { text.textContent = s.shut + (i === 1 ? s.tom : d[k]) + s.at + fmt(HOURS[k][0]); return; } }
   }
-  render(); setInterval(render, 60000);
+  window.__renderStatus = render;
+  render(); setInterval(function () { render(); }, 60000);
+})();
+</script>
+
+<script>
+/* Bilingue EN/ES. El HTML se escribe una sola vez en ingles; aqui se intercambian
+   los nodos de texto. Sin recarga, sin segunda pagina que mantener. */
+(function () {
+  var DICT = {"Skip to the menu": "Ir al menú", "Menu": "Menú", "Our story": "Nuestra historia", "Reviews": "Reseñas", "Visit": "Visítanos", "Call": "Llamar", "On Monterey Road since 2007": "En Monterey Road desde 2007", "Garlic, cooked": "Ajo, cocinado", "properly.": "como se debe.", "An American and Italian kitchen in downtown Gilroy. Cooked to order, nothing reheated, and garlic in nearly everything.": "Cocina americana e italiana en el centro de Gilroy. Todo se prepara al momento, nada recalentado, y ajo en casi todo.", "See the menu": "Ver el menú", "Hours and directions": "Horario y cómo llegar", "7461 Monterey Road, under the red awning.": "7461 Monterey Road, bajo el toldo rojo.", "The menu": "El menú", "Breakfast and lunch all week, dinner Thursday through Saturday. Specials and house desserts change with the kitchen, so call if you want to know what Diego is making today.": "Desayuno y comida toda la semana, cena de jueves a sábado. Los especiales y los postres de la casa cambian según la cocina, así que llame si quiere saber qué está preparando Diego hoy.", "AI-generated illustration, not a photo of this restaurant.": "Ilustración generada con IA, no es una foto de este restaurante.", "Garlic City Burger": "Garlic City Burger", "Garlic ground into the patty and a dozen roasted cloves on top, with garlic fries. The plate the restaurant is named for.": "Ajo molido en la carne y una docena de dientes rostizados encima, con papas al ajo. El plato que le da el nombre al restaurante.", "House favorite": "El favorito de la casa", "Served all day": "Todo el día", "Cream of Garlic Soup": "Sopa crema de ajo", "The house signature, creamy and bold without being harsh. Every entree comes with soup or salad.": "La especialidad de la casa: cremosa y con carácter, sin ser pesada. Todos los platos fuertes vienen con sopa o ensalada.", "Priced daily": "Precio del día", "ask your server": "pregunte a su mesero", "Garlic Vanilla Ice Cream": "Helado de vainilla con ajo", "The dessert nobody expects and everybody remembers. It tastes better than it sounds.": "El postre que nadie espera y todos recuerdan. Sabe mejor de lo que suena.", "House dessert": "Postre de la casa", "Sandwiches and paninis": "Sándwiches y paninis", "Garlic Chicken Sandwich": "Sándwich de pollo al ajo", "Garlic Chicken and Eggplant Panini": "Panini de pollo al ajo y berenjena", "Cuban Sandwich": "Sándwich cubano", "Steak Sandwich": "Sándwich de bistec", "Calamari Steak Sandwich": "Sándwich de filete de calamar", "Hot Pastrami Sandwich": "Sándwich de pastrami caliente", "Cajun Chicken": "Pollo cajún", "Starters and salads": "Entradas y ensaladas", "Crab Cakes": "Tortitas de cangrejo", "Bruschetta": "Bruschetta", "Roasted Beet Salad": "Ensalada de betabel rostizado", "Cajun Chicken Salad": "Ensalada de pollo cajún", "Whole Roasted Garlic": "Cabeza de ajo rostizada", "Deep Fried Artichokes": "Alcachofas capeadas", "Pasta and entrees": "Pastas y platos fuertes", "Penne Pasta and Prawns Florentine": "Penne con camarones a la florentina", "Sage Chicken": "Pollo a la salvia", "Chicken Piccata": "Pollo piccata", "Chicken Marsala": "Pollo al marsala", "Cannelloni": "Canelones", "Chicken Coq au Vin": "Pollo coq au vin", "Also from the kitchen": "También sale de la cocina", "Eggs Benedict": "Huevos benedictinos", "French Dip on Garlic Bread": "French dip en pan de ajo", "Turkey Club": "Club de pavo", "Crab Melt": "Crab melt de cangrejo gratinado", "Mushroom Chicken Sandwich": "Sándwich de pollo con champiñones", "Antipasto": "Antipasto", "Chicken Tomato Cream Bucatini": "Bucatini de pollo en crema de tomate", "Eggplant Caprese Panini": "Panini caprese de berenjena", "These rotate with the specials board. Call": "Estos cambian con el pizarrón de especiales. Llame al", "for today's prices.": "para los precios de hoy.", "Vegetarian, vegan and gluten free options are available, and there is a kids menu. Ask us and we will work with you.": "Hay opciones vegetarianas, veganas y sin gluten, y menú para niños. Pregúntenos y le acomodamos el plato.", "On Monterey Road": "En Monterey Road", "since 2007.": "desde 2007.", "Garlic City Cafe opened in 2007 in the middle of downtown Gilroy, a town that calls itself the Garlic Capital of the World and means it. We took the name seriously: garlic is in the soup, on the burger, folded into the bread, and yes, in the vanilla ice cream.": "Garlic City Cafe abrió en 2007 en pleno centro de Gilroy, un pueblo que se dice Capital Mundial del Ajo y lo dice en serio. Nos tomamos el nombre en serio: hay ajo en la sopa, en la hamburguesa, dentro del pan y sí, en el helado de vainilla.", "Diego runs the kitchen. Food is cooked when you order it, not pulled from a freezer, and the portions are built for people who worked that morning. Margarita and the rest of the floor know the regulars by what they order.": "Diego lleva la cocina. La comida se prepara cuando usted la pide, no sale del congelador, y las porciones están pensadas para quien trabajó toda la mañana. Margarita y el resto del salón reconocen a los clientes de siempre por lo que ordenan.", "Inside, it is a small cafe with about a dozen tables, not a production line. Outside, the patio is pet friendly and the dog gets water without being asked. Street parking is right there on Monterey.": "Adentro es un café chico, como una docena de mesas, no una línea de producción. Afuera, el patio acepta mascotas y al perro le sirven agua sin que haya que pedirla. Hay estacionamiento sobre Monterey.", "Same block ever since": "En la misma cuadra desde entonces", "Days a week, Tuesday to Sunday": "Días a la semana, de martes a domingo", "Tables inside, give or take, plus the patio": "Mesas adentro, más o menos, más el patio", "What Gilroy says": "Lo que dice Gilroy", "Guests call it a hidden gem of downtown Gilroy: fresh food, generous plates, fair prices, and a presentation that outruns the price tag.": "Los clientes lo llaman una joya escondida del centro de Gilroy: comida fresca, platos generosos, precios justos y una presentación que supera lo que cuesta.", "Read the reviews on Yelp": "Lea las reseñas en Yelp", "reviews on Google": "reseñas en Google", "reviews on Yelp": "reseñas en Yelp", "reviews on Tripadvisor, #2 in Gilroy": "reseñas en Tripadvisor, #2 en Gilroy", "Guest review, Restaurantji": "Reseña de un cliente, Restaurantji", "Guest review, Tripadvisor": "Reseña de un cliente, Tripadvisor", "Come by": "Visítenos", "Address": "Dirección", "Phone": "Teléfono", ", takeout too": ", también para llevar", "Hours": "Horario", "Tuesday": "Martes", "Wednesday": "Miércoles", "Thursday": "Jueves", "Friday": "Viernes", "Saturday": "Sábado", "Sunday": "Domingo", "Monday": "Lunes", "8:00 am to 3:00 pm": "8:00 am a 3:00 pm", "8:00 am to 7:00 pm": "8:00 am a 7:00 pm", "8:00 am to 1:00 pm": "8:00 am a 1:00 pm", "Closed": "Cerrado", "Good to know": "Bueno saber", "Pet friendly patio. Street parking on Monterey Road. Weekend mornings fill up fast.": "Patio que acepta mascotas. Estacionamiento sobre Monterey Road. Las mañanas de fin de semana se llenan rápido.", "Downtown Gilroy, between the shops on Monterey Road.": "Centro de Gilroy, entre los comercios de Monterey Road.", "Get directions": "Cómo llegar", "American and Italian cooking in the Garlic Capital of the World, since 2007.": "Cocina americana e italiana en la Capital Mundial del Ajo, desde 2007.", "Yelp reviews": "Reseñas en Yelp", "Closed Mondays. Dinner service Thursday through Saturday.": "Cerrado los lunes. Servicio de cena de jueves a sábado.", "Demo, designed by Kevin Varon.": "Demo, diseñada por Kevin Varon.", "Call (408) 847-7744": "Llamar al (408) 847-7744"};
+  var ATTRS = {"Garlic City Cafe, back to top": "Garlic City Cafe, volver arriba", "Sections": "Secciones", "The wine-red Garlic City Cafe awning with its garlic-bulb logo over the entrance at 7461 Monterey Road, Gilroy": "El toldo color vino de Garlic City Cafe con su logo de cabeza de ajo sobre la entrada en 7461 Monterey Road, Gilroy", "Garlic burger topped with roasted garlic cloves next to garlic fries": "Hamburguesa al ajo con dientes de ajo rostizados encima, junto a papas al ajo", "Bowl of cream of garlic soup with croutons and chives": "Plato de sopa crema de ajo con crutones y cebollín", "Map showing Garlic City Cafe at 7461 Monterey Rd, Gilroy, California": "Mapa que muestra Garlic City Cafe en 7461 Monterey Rd, Gilroy, California"};
+  var META = { title: "Garlic City Cafe | Centro de Gilroy desde 2007", desc: "Garlic City Cafe, cocina americana e italiana en Monterey Road, en el centro de Gilroy, desde 2007. Sopa crema de ajo, la Garlic City Burger, helado de vainilla con ajo. (408) 847-7744." };
+
+  var nodes = [];   // [nodo, textoOriginalEN]
+  var attrs = [];   // [elemento, atributo, valorOriginalEN]
+  var lang = "en";
+
+  function collect() {
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT, {
+      acceptNode: function (n) {
+        if (!n.nodeValue || !n.nodeValue.trim()) return NodeFilter.FILTER_REJECT;
+        var p = n.parentElement;
+        if (!p) return NodeFilter.FILTER_REJECT;
+        // el estado abierto/cerrado lo escribe el reloj, no el diccionario
+        if (p.closest("#status, script, style, [data-no-i18n]")) return NodeFilter.FILTER_REJECT;
+        return DICT[n.nodeValue.trim()] ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    var n; while ((n = walker.nextNode())) nodes.push([n, n.nodeValue]);
+
+    ["aria-label", "alt", "title"].forEach(function (a) {
+      document.querySelectorAll("[" + a + "]").forEach(function (el) {
+        if (el.id === "lang") return;             // el boton se maneja aparte
+        if (ATTRS[el.getAttribute(a)]) attrs.push([el, a, el.getAttribute(a)]);
+      });
+    });
+  }
+
+  function apply(to) {
+    lang = to;
+    var es = to === "es";
+    nodes.forEach(function (p) {
+      var orig = p[1], key = orig.trim();
+      p[0].nodeValue = es ? orig.replace(key, DICT[key]) : orig;
+    });
+    attrs.forEach(function (p) { p[0].setAttribute(p[1], es ? ATTRS[p[2]] : p[2]); });
+
+    document.documentElement.lang = to;
+    document.title = es ? META.title : META.titleEn;
+    var d = document.querySelector('meta[name="description"]');
+    if (d) d.setAttribute("content", es ? META.desc : META.descEn);
+
+    var b = document.getElementById("lang");
+    if (b) {
+      document.getElementById("lang-label").textContent = es ? "EN" : "ES";
+      b.setAttribute("aria-label", es ? "View this page in English" : "Ver esta pagina en espanol");
+      b.title = es ? "English" : "Espanol";
+    }
+    if (window.__renderStatus) window.__renderStatus(to);
+    try { localStorage.setItem("gcc-lang", to); } catch (e) {}
+  }
+
+  function init() {
+    META.titleEn = document.title;
+    var d = document.querySelector('meta[name="description"]');
+    META.descEn = d ? d.getAttribute("content") : "";
+    collect();
+
+    var saved = null;
+    try { saved = localStorage.getItem("gcc-lang"); } catch (e) {}
+    var guess = saved || ((navigator.language || "en").toLowerCase().indexOf("es") === 0 ? "es" : "en");
+
+    var b = document.getElementById("lang");
+    if (b) b.addEventListener("click", function () { apply(lang === "es" ? "en" : "es"); });
+    if (guess === "es") apply("es"); else apply("en");
+  }
+
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init);
+  else init();
 })();
 </script>
 </body>
