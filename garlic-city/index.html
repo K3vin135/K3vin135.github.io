@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Garlic City Cafe | Downtown Gilroy since 2007</title>
+<meta name="description" content="Garlic City Cafe, an American and Italian kitchen on Monterey Road in downtown Gilroy since 2007. Cream of garlic soup, the Garlic City Burger, garlic vanilla ice cream. (408) 847-7744.">
+<meta name="theme-color" content="#7e2234">
+<meta property="og:title" content="Garlic City Cafe | Downtown Gilroy since 2007">
+<meta property="og:description" content="American and Italian plates in the Garlic Capital of the World. Open Tuesday through Sunday at 7461 Monterey Rd, Gilroy.">
+<meta property="og:image" content="https://k3vin135.github.io/garlic-city/images/storefront.jpg">
+  <meta property="og:url" content="https://k3vin135.github.io/garlic-city/">
+  <meta name="twitter:card" content="summary_large_image">
+<meta property="og:type" content="restaurant">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237e2234'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-size='34' font-weight='700' text-anchor='middle' fill='%23f6ecd6'%3EG%3C/text%3E%3C/svg%3E">
+<link rel="canonical" href="https://k3vin135.github.io/garlic-city/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,500..800,100,1&family=Archivo:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Restaurant",
+  "name": "Garlic City Cafe",
+  "telephone": "+1-408-847-7744",
+  "servesCuisine": ["American", "Italian"],
+  "address": { "@type": "PostalAddress", "streetAddress": "7461 Monterey Rd", "addressLocality": "Gilroy", "addressRegion": "CA", "postalCode": "95020", "addressCountry": "US" },
+  "geo": { "@type": "GeoCoordinates", "latitude": 37.00767, "longitude": -121.56927 },
+  "openingHoursSpecification": [
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Tuesday", "Wednesday"], "opens": "08:00", "closes": "15:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Thursday", "Friday", "Saturday"], "opens": "08:00", "closes": "19:00" },
+    { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Sunday"], "opens": "08:00", "closes": "13:00" }
+  ]
+}
+</script>
+
+<style>
+/* Garlic City Cafe, the remix.
+   The palette is taken from the storefront itself: the wine red awning,
+   the cream stucco and lettering, the butter and white umbrella stripes,
+   the red iron patio chairs and the brick sidewalk. Pastel tints carry the
+   sections. One light theme, no ambient animation: hover feedback only. */
+:root {
+  --cream:   #fbf5e8;   /* page */
+  --stucco:  #f3e7cf;   /* awning lettering, panels */
+  --butter:  #f8ecc4;   /* umbrella stripe, pastel */
+  --blush:   #f6e0dc;   /* pastel pink */
+  --sage:    #e3e9d6;   /* pastel green, garlic stem */
+  --awning:  #7e2234;   /* the awning: primary color, CTAs */
+  --awning-d:#62192a;
+  --brick:   #b0523a;   /* sidewalk brick, prices */
+  --ink:     #2b1e1b;
+  --ink-soft:#5c4a43;
+  --ink-faint:#776257;
+  --line:    #e5d6bb;
+
+  --r: 14px; --r-sm: 8px; --r-pill: 999px;
+  --shell: 1180px;
+  --display: "Fraunces", Georgia, "Times New Roman", serif;
+  --body: "Archivo", "Helvetica Neue", Arial, sans-serif;
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--cream); color: var(--ink); font: 400 1rem/1.6 var(--body); -webkit-font-smoothing: antialiased; }
+img { display: block; max-width: 100%; height: auto; }
+h1, h2, h3 { margin: 0; font-family: var(--display); font-weight: 700; font-variation-settings: "SOFT" 100, "WONK" 1; letter-spacing: -0.01em; line-height: 1.08; text-wrap: balance; }
+p { margin: 0; text-wrap: pretty; }
+a { color: var(--awning); text-underline-offset: 3px; text-decoration-thickness: 1px; }
+a:hover { color: var(--awning-d); }
+:focus-visible { outline: 2px solid var(--awning); outline-offset: 3px; border-radius: var(--r-sm); }
+::selection { background: rgba(126, 34, 52, .16); }
+.shell { max-width: var(--shell); margin: 0 auto; padding: 0 20px; }
+@media (min-width: 900px) { .shell { padding: 0 40px; } }
+.skip { position: absolute; left: -9999px; top: 0; z-index: 100; background: var(--ink); color: var(--cream); padding: 12px 18px; border-radius: 0 0 var(--r-sm) 0; }
+.skip:focus { left: 0; }
+
+/* ---------- the awning (header) ---------- */
+.awning {
+  position: relative; background: var(--awning); color: var(--stucco);
+  padding: 18px 0 30px;
+  /* scalloped bottom edge, like the real awning */
+  -webkit-mask: radial-gradient(14px 12px at 50% 100%, transparent 98%, #000) 0 0 / 28px 100% repeat-x;
+          mask: radial-gradient(14px 12px at 50% 100%, transparent 98%, #000) 0 0 / 28px 100% repeat-x;
+}
+.awning-in { display: flex; align-items: center; gap: 20px; flex-wrap: wrap; }
+.wordmark { text-decoration: none; color: var(--stucco); display: inline-flex; flex-direction: column; align-items: center; line-height: 1; }
+.wordmark .name { font-family: var(--display); font-weight: 800; font-variation-settings: "SOFT" 100, "WONK" 1; font-size: clamp(1.7rem, 4vw, 2.3rem); letter-spacing: .01em; }
+.wordmark .cafe { margin-top: 6px; background: var(--stucco); color: var(--awning); border-radius: var(--r-pill); padding: 2px 22px; font-family: var(--display); font-weight: 700; font-size: .78rem; letter-spacing: .32em; }
+.wordmark:hover { color: #fff7e8; }
+nav.links { margin-left: auto; display: none; gap: 26px; }
+@media (min-width: 900px) { nav.links { display: flex; } }
+nav.links a { color: #f3dfcf; text-decoration: none; font-size: .92rem; font-weight: 500; padding: 4px 0; border-bottom: 1px solid transparent; transition: border-color .2s, color .2s; }
+nav.links a:hover { color: #fff; border-color: var(--butter); }
+.status { display: inline-flex; align-items: center; gap: 8px; font-size: .82rem; color: #f3dfcf; white-space: nowrap; }
+.status .dot { width: 8px; height: 8px; border-radius: 50%; background: #d8c4b0; }
+.status[data-open="yes"] .dot { background: #9fd28a; }
+.status[data-open="no"] .dot { background: #e9a9a0; }
+.bar-right { margin-left: auto; display: flex; align-items: center; gap: 14px; }
+@media (min-width: 900px) { .bar-right { margin-left: 0; } }
+
+/* umbrella stripes, used as a divider */
+.stripes { height: 14px; background: repeating-linear-gradient(90deg, var(--butter) 0 22px, #fffaf0 22px 44px); border-block: 1px solid var(--line); }
+
+/* ---------- buttons ---------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 9px; font: 500 .95rem/1 var(--body); padding: 14px 22px; border-radius: var(--r-pill); text-decoration: none; white-space: nowrap; border: 1px solid transparent; transition: background-color .2s, color .2s, border-color .2s; }
+.btn i { font-size: 1.1em; }
+.btn-primary { background: var(--awning); color: var(--stucco); }
+.btn-primary:hover { background: var(--awning-d); color: #fff7e8; }
+.btn-ghost { color: var(--ink); border-color: #cdb894; background: transparent; }
+.btn-ghost:hover { color: var(--ink); border-color: var(--ink); background: rgba(43, 30, 27, .04); }
+.btn-light { background: var(--stucco); color: var(--awning); }
+.btn-light:hover { background: #fff7e8; color: var(--awning-d); }
+.btn-sm { padding: 10px 16px; font-size: .86rem; }
+
+/* ---------- hero ---------- */
+.hero { padding: 48px 0 72px; }
+@media (min-width: 900px) { .hero { padding: 64px 0 88px; } }
+.hero-grid { display: grid; gap: 40px; align-items: center; }
+@media (min-width: 980px) { .hero-grid { grid-template-columns: 1fr 1.05fr; gap: 60px; } }
+.since { display: inline-block; font-family: var(--display); font-weight: 600; font-size: .95rem; color: var(--brick); border: 1px solid #e3bfae; background: var(--blush); border-radius: var(--r-pill); padding: 4px 14px; }
+.hero h1 { margin-top: 18px; font-size: clamp(2.6rem, 7vw, 4.6rem); color: var(--ink); }
+.hero h1 span { color: var(--awning); }
+.hero-sub { margin-top: 20px; font-size: clamp(1.05rem, 2vw, 1.2rem); color: var(--ink-soft); max-width: 44ch; }
+.hero-cta { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+.photo { position: relative; margin: 0; }
+.photo img { width: 100%; border-radius: var(--r); border: 6px solid #fffaf0; box-shadow: 0 2px 0 var(--line), 0 18px 40px rgba(126, 34, 52, .14); transform: rotate(1.2deg); }
+.photo figcaption { margin-top: 14px; text-align: center; font-size: .86rem; color: var(--ink-faint); }
+
+/* ---------- sections ---------- */
+section { padding: 72px 0; }
+@media (min-width: 900px) { section { padding: 96px 0; } }
+.t-butter { background: var(--butter); }
+.t-blush  { background: var(--blush); }
+.t-sage   { background: var(--sage); }
+h2 { font-size: clamp(2rem, 4.6vw, 3rem); }
+.lede { margin-top: 14px; color: var(--ink-soft); max-width: 62ch; font-size: 1.05rem; }
+
+/* ---------- menu ---------- */
+.sig-grid { margin-top: 40px; display: grid; gap: 18px; }
+@media (min-width: 860px) { .sig-grid { grid-template-columns: 1.2fr 1fr; grid-template-rows: auto auto; } .sig-a { grid-row: span 2; } }
+.sig { background: #fffaf0; border: 1px solid var(--line); border-radius: var(--r); overflow: hidden; display: flex; flex-direction: column; }
+.sig img { width: 100%; object-fit: cover; aspect-ratio: 16 / 10; }
+.sig-a img { aspect-ratio: 4 / 3; }
+.sig .body { padding: 22px 22px 20px; display: flex; flex-direction: column; gap: 8px; flex: 1; }
+.sig h3 { font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--awning); }
+.sig-a h3 { font-size: clamp(1.8rem, 4vw, 2.5rem); }
+.sig p { color: var(--ink-soft); font-size: .97rem; }
+.sig .foot { margin-top: auto; padding-top: 12px; border-top: 1px dashed var(--line); display: flex; justify-content: space-between; gap: 12px; font-size: .88rem; color: var(--ink-faint); }
+.price { font-variant-numeric: tabular-nums; color: var(--brick); font-weight: 600; white-space: nowrap; }
+.price.soft { color: var(--ink-faint); font-weight: 400; font-size: .86rem; }
+.sig .big-price { margin: 6px 0 4px; font-family: var(--display); font-weight: 700; font-size: clamp(2.6rem, 6vw, 3.6rem); line-height: 1; color: var(--brick); font-variant-numeric: tabular-nums; }
+
+.board { margin-top: 48px; background: #fffaf0; border: 1px solid var(--line); border-radius: var(--r); padding: 28px 22px; }
+@media (min-width: 900px) { .board { padding: 40px 44px; } }
+.cols { display: grid; gap: 36px; }
+@media (min-width: 880px) { .cols { grid-template-columns: 1fr 1fr; gap: 28px 56px; } }
+.group h3 { font-size: 1.4rem; color: var(--awning); padding-bottom: 10px; border-bottom: 2px solid var(--awning); }
+.group ul { list-style: none; margin: 0; padding: 0; }
+.group li { display: flex; align-items: baseline; gap: 10px; padding: 11px 0; }
+.group .lead { flex: 1 1 auto; min-width: 18px; border-bottom: 2px dotted #d6c19c; transform: translateY(-4px); }
+.more h3 { font-size: 1.4rem; color: var(--awning); }
+.pills { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.pills span { border: 1px solid var(--line); background: var(--stucco); border-radius: var(--r-pill); padding: 7px 14px; font-size: .9rem; color: var(--ink-soft); }
+.more .after { margin-top: 16px; color: var(--ink-soft); font-size: .95rem; }
+.diet { margin-top: 28px; display: flex; gap: 10px; align-items: flex-start; color: var(--ink-soft); font-size: .95rem; }
+.diet i { color: var(--awning); font-size: 1.2rem; margin-top: 2px; }
+
+/* ---------- story ---------- */
+.story { display: grid; gap: 36px; }
+@media (min-width: 980px) { .story { grid-template-columns: .9fr 1.1fr; gap: 64px; align-items: start; } }
+.story h2 span { color: var(--awning); }
+.story .body p { color: var(--ink-soft); font-size: 1.05rem; max-width: 60ch; }
+.story .body p + p { margin-top: 18px; }
+.years { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 14px; }
+.years div { background: #fffaf0; border: 1px solid #d9e0c8; border-radius: var(--r); padding: 16px 20px; min-width: 150px; }
+.story .years .n { font-family: var(--display); font-weight: 700; font-size: 2.2rem; line-height: 1; color: var(--awning); }
+.story .years .t { max-width: none; margin-top: 6px; font-size: .84rem; color: var(--ink-faint); }
+
+/* ---------- reviews ---------- */
+.rep { display: grid; gap: 36px; }
+@media (min-width: 980px) { .rep { grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; } }
+.scores { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+.score { background: #fffaf0; border: 1px solid #ecc9c2; border-radius: var(--r); padding: 20px; }
+.score .v { font-family: var(--display); font-weight: 700; font-size: 2.6rem; line-height: 1; color: var(--awning); }
+.score .v small { font-size: .45em; color: var(--brick); }
+.score .m { margin-top: 8px; font-size: .86rem; color: var(--ink-soft); }
+.quotes { margin-top: 28px; display: grid; gap: 14px; }
+@media (min-width: 760px) { .quotes { grid-template-columns: repeat(3, 1fr); } }
+.quotes figure { margin: 0; padding: 18px 20px; border-left: 4px solid var(--awning); background: rgba(255, 250, 240, .7); border-radius: 0 var(--r-sm) var(--r-sm) 0; }
+.quotes blockquote { margin: 0; font-family: var(--display); font-weight: 600; font-size: 1.15rem; line-height: 1.3; }
+.quotes figcaption { margin-top: 8px; font-size: .82rem; color: var(--ink-faint); }
+
+/* ---------- visit ---------- */
+.visit { display: grid; gap: 36px; }
+@media (min-width: 980px) { .visit { grid-template-columns: .95fr 1.05fr; gap: 56px; align-items: stretch; } }
+.facts { list-style: none; margin: 24px 0 0; padding: 0; }
+.facts li { display: flex; gap: 14px; padding: 16px 0; border-top: 1px dashed var(--line); }
+.facts li:last-child { border-bottom: 1px dashed var(--line); }
+.facts .ico { color: var(--awning); font-size: 1.3rem; flex: none; }
+.facts .k { font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ink-faint); font-weight: 600; }
+.facts .vv { margin-top: 3px; }
+.hours { list-style: none; margin: 4px 0 0; padding: 0; font-variant-numeric: tabular-nums; }
+.hours li { display: flex; justify-content: space-between; gap: 16px; padding: 7px 10px 7px 0; border-radius: var(--r-sm); }
+.hours li[data-today="yes"] { background: var(--blush); padding-left: 10px; font-weight: 600; }
+.hours .d { color: var(--ink-soft); }
+.hours .closed { color: var(--awning); }
+.map { border: 6px solid #fffaf0; border-radius: var(--r); overflow: hidden; box-shadow: 0 2px 0 var(--line), 0 14px 34px rgba(126, 34, 52, .1); display: flex; flex-direction: column; background: var(--stucco); }
+.map iframe { display: block; width: 100%; height: 340px; border: 0; }
+@media (min-width: 980px) { .map iframe { height: auto; flex: 1; min-height: 420px; } }
+.map .cap { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 10px; padding: 12px 14px; font-size: .88rem; color: var(--ink-soft); }
+
+/* ---------- footer (brick) ---------- */
+footer { background: var(--awning); color: #f0dccd; padding: 56px 0 40px; }
+.foot-grid { display: grid; gap: 28px; }
+@media (min-width: 820px) { .foot-grid { grid-template-columns: 1.2fr 1fr 1fr; gap: 40px; } }
+footer ul { list-style: none; margin: 0; padding: 0; }
+footer li { padding: 4px 0; font-size: .94rem; }
+footer a { color: #f6e7d8; text-decoration: none; }
+footer a:hover { color: #fff; text-decoration: underline; }
+
+.credit { margin-top: 36px; padding-top: 18px; border-top: 1px solid rgba(243, 231, 207, .25); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px 20px; font-size: .8rem; color: #e2c9bb; }
+.credit a { color: #f3dfcf; }
+
+/* phone: the call button lives in the thumb zone */
+.callbar { display: none; }
+@media (max-width: 699px) {
+  .call-top { display: none; }
+  .callbar { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(251, 245, 232, .96); border-top: 1px solid var(--line); }
+  .callbar .btn { width: 100%; padding: 15px 20px; }
+  body { padding-bottom: 86px; }
+  .photo img { transform: none; }
+}
+
+.ai-note{display:flex;gap:.45rem;align-items:flex-start;margin:.5rem 0 0;padding:.4rem .6rem;
+  font-size:.78rem;line-height:1.35;color:#6f5a52;background:rgba(126,34,52,.055);
+  border-left:2px solid rgba(126,34,52,.42);border-radius:0 4px 4px 0}
+.ai-note svg{flex:0 0 auto;margin-top:.1rem;opacity:.75}
+.ai-banner{display:flex;gap:.6rem;align-items:flex-start;max-width:46rem;margin:1.1rem auto 0;
+  padding:.7rem .9rem;font-size:.84rem;line-height:1.45;color:#5f4b44;
+  background:rgba(126,34,52,.07);border:1px solid rgba(126,34,52,.2);border-radius:8px}
+.ai-banner strong{color:#7e2234}
+@media(max-width:640px){.ai-note,.ai-banner{font-size:.76rem}}
+</style>
+</head>
+<body>
+<a class="skip" href="#menu">Skip to the menu</a>
+
+<header class="awning">
+  <div class="shell awning-in">
+    <a class="wordmark" href="#top" aria-label="Garlic City Cafe, back to top"><span class="name">Garlic City</span><span class="cafe">CAFE</span></a>
+    <nav class="links" aria-label="Sections">
+      <a href="#menu">Menu</a>
+      <a href="#story">Our story</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#visit">Visit</a>
+    </nav>
+    <div class="bar-right">
+      <p class="status" id="status" aria-live="polite"><span class="dot" aria-hidden="true"></span><span id="status-text">Checking hours</span></p>
+      <a class="btn btn-light btn-sm call-top" href="tel:+14088477744"><i class="ph ph-phone"></i>Call</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="shell hero-grid">
+      <div>
+        <span class="since">On Monterey Road since 2007</span>
+        <h1>Garlic, cooked <span>properly.</span></h1>
+        <p class="hero-sub">An American and Italian kitchen in downtown Gilroy. Cooked to order, nothing reheated, and garlic in nearly everything.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#menu"><i class="ph ph-fork-knife"></i>See the menu</a>
+          <a class="btn btn-ghost" href="#visit"><i class="ph ph-map-pin"></i>Hours and directions</a>
+        </div>
+      </div>
+      <figure class="photo">
+        <img src="images/storefront.jpg" width="690" height="426" fetchpriority="high" alt="The wine-red Garlic City Cafe awning with its garlic-bulb logo over the entrance at 7461 Monterey Road, Gilroy">
+        <figcaption>7461 Monterey Road, under the red awning.</figcaption>
+      </figure>
+    </div>
+  </div>
+
+  <div class="stripes" aria-hidden="true"></div>
+
+  <section id="menu" class="t-butter">
+    <div class="shell">
+      <h2>The menu</h2>
+      <p class="lede">Breakfast and lunch all week, dinner Thursday through Saturday. Specials and house desserts change with the kitchen, so call if you want to know what Diego is making today.</p>
+
+      <div class="sig-grid">
+        <article class="sig sig-a">
+          <img src="images/hero-burger.jpg" width="1536" height="1024" alt="Garlic burger topped with roasted garlic cloves next to garlic fries"><p class="ai-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16.5v.01"/></svg><span>AI-generated illustration, not a photo of this restaurant.</span></p>
+          <div class="body">
+            <h3>Garlic City Burger</h3>
+            <p>Garlic ground into the patty and a dozen roasted cloves on top, with garlic fries. The plate the restaurant is named for.</p>
+            <p class="big-price">$12.95</p>
+            <div class="foot"><span>House favorite</span><span>Served all day</span></div>
+          </div>
+        </article>
+        <article class="sig">
+          <img src="images/garlic-soup.jpg" width="1024" height="1536" alt="Bowl of cream of garlic soup with croutons and chives"><p class="ai-note"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 8v5M12 16.5v.01"/></svg><span>AI-generated illustration, not a photo of this restaurant.</span></p>
+          <div class="body">
+            <h3>Cream of Garlic Soup</h3>
+            <p>The house signature, creamy and bold without being harsh. Every entree comes with soup or salad.</p>
+            <div class="foot"><span>Priced daily</span><span class="price soft">ask your server</span></div>
+          </div>
+        </article>
+        <article class="sig">
+          <div class="body">
+            <h3>Garlic Vanilla Ice Cream</h3>
+            <p>The dessert nobody expects and everybody remembers. It tastes better than it sounds.</p>
+            <div class="foot"><span>House dessert</span><span class="price soft">ask your server</span></div>
+          </div>
+        </article>
+      </div>
+
+      <div class="board">
+        <div class="cols">
+          <div class="group">
+            <h3>Sandwiches and paninis</h3>
+            <ul>
+              <li><span>Garlic Chicken Sandwich</span><span class="lead" aria-hidden="true"></span><span class="price">$9.95</span></li>
+              <li><span>Garlic Chicken and Eggplant Panini</span><span class="lead" aria-hidden="true"></span><span class="price">$10.25</span></li>
+              <li><span>Cuban Sandwich</span><span class="lead" aria-hidden="true"></span><span class="price">$9.95</span></li>
+              <li><span>Steak Sandwich</span><span class="lead" aria-hidden="true"></span><span class="price">$12.50</span></li>
+              <li><span>Calamari Steak Sandwich</span><span class="lead" aria-hidden="true"></span><span class="price">$11.25</span></li>
+              <li><span>Hot Pastrami Sandwich</span><span class="lead" aria-hidden="true"></span><span class="price">$10.25</span></li>
+              <li><span>Cajun Chicken</span><span class="lead" aria-hidden="true"></span><span class="price">$9.95</span></li>
+            </ul>
+          </div>
+          <div class="group">
+            <h3>Starters and salads</h3>
+            <ul>
+              <li><span>Crab Cakes</span><span class="lead" aria-hidden="true"></span><span class="price">$8.95</span></li>
+              <li><span>Bruschetta</span><span class="lead" aria-hidden="true"></span><span class="price">$6.95</span></li>
+              <li><span>Roasted Beet Salad</span><span class="lead" aria-hidden="true"></span><span class="price">$8.95</span></li>
+              <li><span>Cajun Chicken Salad</span><span class="lead" aria-hidden="true"></span><span class="price">$10.95</span></li>
+              <li><span>Whole Roasted Garlic</span><span class="lead" aria-hidden="true"></span><span class="price soft">ask your server</span></li>
+              <li><span>Deep Fried Artichokes</span><span class="lead" aria-hidden="true"></span><span class="price soft">ask your server</span></li>
+            </ul>
+          </div>
+          <div class="group">
+            <h3>Pasta and entrees</h3>
+            <ul>
+              <li><span>Penne Pasta and Prawns Florentine</span><span class="lead" aria-hidden="true"></span><span class="price">$18.95</span></li>
+              <li><span>Sage Chicken</span><span class="lead" aria-hidden="true"></span><span class="price">$18.95</span></li>
+              <li><span>Chicken Piccata</span><span class="lead" aria-hidden="true"></span><span class="price">$17.95</span></li>
+              <li><span>Chicken Marsala</span><span class="lead" aria-hidden="true"></span><span class="price">$17.95</span></li>
+              <li><span>Cannelloni</span><span class="lead" aria-hidden="true"></span><span class="price">$16.95</span></li>
+              <li><span>Chicken Coq au Vin</span><span class="lead" aria-hidden="true"></span><span class="price soft">ask your server</span></li>
+            </ul>
+          </div>
+          <div class="more">
+            <h3>Also from the kitchen</h3>
+            <div class="pills">
+              <span>Eggs Benedict</span><span>French Dip on Garlic Bread</span><span>Turkey Club</span><span>Crab Melt</span>
+              <span>Mushroom Chicken Sandwich</span><span>Antipasto</span><span>Chicken Tomato Cream Bucatini</span><span>Eggplant Caprese Panini</span>
+            </div>
+            <p class="after">These rotate with the specials board. Call <a href="tel:+14088477744">(408) 847-7744</a> for today's prices.</p>
+          </div>
+        </div>
+      </div>
+      <p class="diet"><i class="ph ph-leaf"></i>Vegetarian, vegan and gluten free options are available, and there is a kids menu. Ask us and we will work with you.</p>
+    </div>
+  </section>
+
+  <section id="story">
+    <div class="shell story">
+      <h2>Nineteen years on <span>Monterey Road.</span></h2>
+      <div class="body">
+        <p>Garlic City Cafe opened in 2007 in the middle of downtown Gilroy, a town that calls itself the Garlic Capital of the World and means it. We took the name seriously: garlic is in the soup, on the burger, folded into the bread, and yes, in the vanilla ice cream.</p>
+        <p>Diego runs the kitchen. Food is cooked when you order it, not pulled from a freezer, and the portions are built for people who worked that morning. Margarita and the rest of the floor know the regulars by what they order.</p>
+        <p>Inside, it is a small cafe with about a dozen tables, not a production line. Outside, the patio is pet friendly and the dog gets water without being asked. Street parking is right there on Monterey.</p>
+        <div class="years">
+          <div><p class="n">2007</p><p class="t">Same block ever since</p></div>
+          <div><p class="n">6</p><p class="t">Days a week, Tuesday to Sunday</p></div>
+          <div><p class="n">12</p><p class="t">Tables inside, give or take, plus the patio</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="stripes" aria-hidden="true"></div>
+
+  <section id="reviews" class="t-blush">
+    <div class="shell">
+      <div class="rep">
+        <div>
+          <h2>What Gilroy says</h2>
+          <p class="lede">Guests call it a hidden gem of downtown Gilroy: fresh food, generous plates, fair prices, and a presentation that outruns the price tag.</p>
+          <p style="margin-top:22px"><a class="btn btn-ghost" href="https://www.yelp.com/biz/garlic-city-cafe-gilroy" target="_blank" rel="noopener"><i class="ph ph-arrow-square-out"></i>Read the reviews on Yelp</a></p>
+        </div>
+        <div class="scores">
+          <div class="score"><p class="v">4.4 <small>&#9733;</small></p><p class="m"><strong>860</strong> reviews on Google</p></div>
+          <div class="score"><p class="v">4.0 <small>&#9733;</small></p><p class="m"><strong>891</strong> reviews on Yelp</p></div>
+          <div class="score"><p class="v">4.3 <small>&#9733;</small></p><p class="m"><strong>171</strong> reviews on Tripadvisor, #2 in Gilroy</p></div>
+        </div>
+      </div>
+      <div class="quotes">
+        <figure><blockquote>“Garlic soup outstanding!”</blockquote><figcaption>Guest review, Restaurantji</figcaption></figure>
+        <figure><blockquote>“Eggplant caprese panini is bursting with flavor.”</blockquote><figcaption>Guest review, Restaurantji</figcaption></figure>
+        <figure><blockquote>“Not large, but nice. Some sidewalk dining.”</blockquote><figcaption>Guest review, Tripadvisor</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="visit" class="t-sage">
+    <div class="shell visit">
+      <div>
+        <h2>Come by</h2>
+        <ul class="facts">
+          <li><i class="ph ph-map-pin ico" aria-hidden="true"></i><div><p class="k">Address</p><p class="vv">7461 Monterey Rd, Gilroy, CA 95020</p></div></li>
+          <li><i class="ph ph-phone ico" aria-hidden="true"></i><div><p class="k">Phone</p><p class="vv"><a href="tel:+14088477744">(408) 847-7744</a>, takeout too</p></div></li>
+          <li><i class="ph ph-clock ico" aria-hidden="true"></i><div style="flex:1"><p class="k">Hours</p>
+            <ul class="hours" id="hours">
+              <li data-day="2"><span class="d">Tuesday</span><span>8:00 am to 3:00 pm</span></li>
+              <li data-day="3"><span class="d">Wednesday</span><span>8:00 am to 3:00 pm</span></li>
+              <li data-day="4"><span class="d">Thursday</span><span>8:00 am to 7:00 pm</span></li>
+              <li data-day="5"><span class="d">Friday</span><span>8:00 am to 7:00 pm</span></li>
+              <li data-day="6"><span class="d">Saturday</span><span>8:00 am to 7:00 pm</span></li>
+              <li data-day="0"><span class="d">Sunday</span><span>8:00 am to 1:00 pm</span></li>
+              <li data-day="1"><span class="d">Monday</span><span class="closed">Closed</span></li>
+            </ul></div></li>
+          <li><i class="ph ph-dog ico" aria-hidden="true"></i><div><p class="k">Good to know</p><p class="vv">Pet friendly patio. Street parking on Monterey Road. Weekend mornings fill up fast.</p></div></li>
+        </ul>
+      </div>
+      <div class="map">
+        <iframe title="Map showing Garlic City Cafe at 7461 Monterey Rd, Gilroy, California" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=-121.5742%2C37.0045%2C-121.5643%2C37.0109&amp;layer=mapnik&amp;marker=37.00767%2C-121.56927"></iframe>
+        <div class="cap"><span>Downtown Gilroy, between the shops on Monterey Road.</span><a href="https://www.google.com/maps/dir/?api=1&amp;destination=7461+Monterey+Rd,+Gilroy,+CA+95020" target="_blank" rel="noopener">Get directions</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="shell">
+    <div class="foot-grid">
+      <div>
+        <a class="wordmark" href="#top"><span class="name">Garlic City</span><span class="cafe">CAFE</span></a>
+        <p style="margin-top:14px;max-width:34ch">American and Italian cooking in the Garlic Capital of the World, since 2007.</p>
+      </div>
+      <ul>
+        <li>7461 Monterey Rd</li>
+        <li>Gilroy, CA 95020</li>
+        <li><a href="tel:+14088477744">(408) 847-7744</a></li>
+      </ul>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#visit">Hours and directions</a></li>
+        <li><a href="https://www.yelp.com/biz/garlic-city-cafe-gilroy" target="_blank" rel="noopener">Yelp reviews</a></li>
+      </ul>
+    </div>
+    <div class="credit">
+      <span>Closed Mondays. Dinner service Thursday through Saturday.</span>
+      <span>Demo, designed by Kevin Varon. <a href="mailto:kevinvaron6@gmail.com">kevinvaron6@gmail.com</a></span>
+    </div>
+  </div>
+</footer>
+
+<div class="callbar"><a class="btn btn-primary" href="tel:+14088477744"><i class="ph ph-phone"></i>Call (408) 847-7744</a></div>
+
+<script>
+(function () {
+  // Open or closed, read on the restaurant's clock (America/Los_Angeles).
+  var HOURS = { 0: [480, 780], 1: null, 2: [480, 900], 3: [480, 900], 4: [480, 1140], 5: [480, 1140], 6: [480, 1140] };
+  var DAY = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+  function now() {
+    try {
+      var p = new Intl.DateTimeFormat("en-US", { timeZone: "America/Los_Angeles", weekday: "short", hour: "2-digit", minute: "2-digit", hour12: false }).formatToParts(new Date());
+      var g = function (t) { for (var i = 0; i < p.length; i++) if (p[i].type === t) return p[i].value; };
+      return { day: { Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6 }[g("weekday")], min: (parseInt(g("hour"), 10) % 24) * 60 + parseInt(g("minute"), 10) };
+    } catch (e) { return null; }
+  }
+  function fmt(m) { var h = Math.floor(m / 60), mm = m % 60; return (h % 12 || 12) + (mm ? ":" + (mm < 10 ? "0" : "") + mm : "") + (h >= 12 ? " pm" : " am"); }
+  var wrap = document.getElementById("status"), text = document.getElementById("status-text");
+  function render() {
+    var n = now();
+    if (!n) { text.textContent = "See hours below"; return; }
+    document.querySelectorAll("#hours li").forEach(function (r) { r.setAttribute("data-today", +r.getAttribute("data-day") === n.day ? "yes" : "no"); });
+    var t = HOURS[n.day];
+    if (t && n.min >= t[0] && n.min < t[1]) { wrap.setAttribute("data-open", "yes"); text.textContent = "Open now until " + fmt(t[1]); return; }
+    wrap.setAttribute("data-open", "no");
+    if (t && n.min < t[0]) { text.textContent = "Opens today at " + fmt(t[0]); return; }
+    for (var i = 1; i <= 7; i++) { var d = (n.day + i) % 7; if (HOURS[d]) { text.textContent = "Closed, opens " + (i === 1 ? "tomorrow" : DAY[d]) + " at " + fmt(HOURS[d][0]); return; } }
+  }
+  render(); setInterval(render, 60000);
+})();
+</script>
+</body>
+</html>
